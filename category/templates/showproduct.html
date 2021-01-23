@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends 'sub_base.html' %}
+
+{% block content %}
+<table class="table table-striped" >
+    <center>
+            {% if messages %}
+                {% for msg in messages %}
+                    <script>
+    					alert('{{ msg }}');
+				    </script>
+                {% endfor %}
+            {% endif%}
+</center>
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    {% for i in product %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.price }}</td>
+        <td>{{ i.cate_id.name }}</td>
+        <td>
+            <a href="editProduct/{{i.id}}">Edit</a>
+        </td>
+        <td>
+            <a href="deleteProduct/{{i.id}}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+</table>
+
+{% endblock %}
